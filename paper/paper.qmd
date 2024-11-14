@@ -6,7 +6,7 @@ author:
 thanks: "Code and data are available at: [https://github.com/NotSakura/ProjectHammerExcer.git](https://github.com/NotSakura/ProjectHammerExcer.git)."
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "We look at the average price of leek and garlic, from June 2024 to November 2024. We find that "
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -23,7 +23,16 @@ library(tidyverse)
 
 
 #Introduction
+  Price of grocery prices has increased greatly over the last few years, especially after covid-19. We wanted to investigate the price accross 3 vendors: NoFrills, Loblaws, Metro. 
+  
+  
+# Data
 
+
+# Results
+
+
+# Discussion
 
 
 #Correlation vs. Causation
