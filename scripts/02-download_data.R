@@ -1,11 +1,9 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
-# License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Purpose: to downlaod the grocery data
+# Author: Shreya Sakura Noskor, Khushaal Nandwani
+# Date: 14 November 2024
+# Contact: sakura.noskor@mail.utoronto.ca
+# Pre-requisite: Download the dataset from [https://jacobfilipp.com/hammer/](https://jacobfilipp.com/hammer/)
 
 
 #### Workspace setup ####
