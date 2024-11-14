@@ -22,6 +22,22 @@ library(tidyverse)
 ```
 
 
+#Introduction
+
+
+
+#Correlation vs. Causation
+
+
+
+#Missing data
+
+
+
+#Source of Bias
+
+
+
 
 
 
