@@ -31,11 +31,11 @@ library(tidyverse)
 
 
 #Missing data
-
+Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
 
 
 #Source of Bias
-
+When comparing the prices across different vendors such as Walmart, Loblaws, Metro and T&T, Regional pricing and the variety of products introduces significant sources of bias and these could impact the analysis. Regional pricing can raise variations in transport costs, local supply and demand, and regional supplier agreements. For example, the prices of garlic can differ between urban and rural areas, which in turn may provide a certain vendor with an appearance of being more expensive because of the regions they are operating within in the dataset. Product variety further complicates the comparison in that different vendors may offer different types of garlic, such as organic, imported, or bulk varieties. These usually come at different prices, and this may skew average price comparisons if one vendor sells mostly premium or bulk garlic while another focuses on standard, single-head garlic. These biases may well be overcome by comparing the prices in similar regions and types of garlic, where possible, to give a more balanced and objective analysis of pricing for each of the vendors. 
 
 
 
