@@ -3,6 +3,8 @@ title: "My title"
 author: 
   - Shreya Sakura Noskor
   - Khushaal Nandwani
+  - Prankit Bhardwaj
+  - Veyasan Ragulan
 thanks: "Code and data are available at: [https://github.com/NotSakura/ProjectHammerExcer.git](https://github.com/NotSakura/ProjectHammerExcer.git)."
 date: today
 date-format: long
