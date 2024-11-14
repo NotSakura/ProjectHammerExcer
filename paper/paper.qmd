@@ -96,11 +96,11 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
 
 
 
-#Missing data
+# Missing data
 Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
 
 
-#Source of Bias
+# Source of Bias
 The prices of garlic and leek in Walmart, Loblaws, and No Frills are used in this analysis. Of the two most significant sources of bias, possibly affecting this analysis, regional pricing and different product varieties stand out. Regional pricing may result in price variation due to a wide range of factors that include transportation cost, local supply and demand, and regional supplier agreements. For instance, prices of garlic and leek for the same vendor may vary between an urban and a rural setting and might make a vendor look more expensive simply because of the regions it operates within in the dataset. Product variety further complicates the comparison, as different vendors can have a variety of garlic and leeks they sell, such as organic, imported, or in bulk. These types often also carry different prices, and if one vendor mainly sells high premium or bulk produce, while another mainly sells regular, single-item offerings, it could skew average price comparisons. Trying to work out these biases by matching the prices within comparable regions and types of garlic and leeks, where possible, would go a long way toward comparison of pricing for each vendor in a far more fair manner.
 
 
