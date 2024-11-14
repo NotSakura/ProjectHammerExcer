@@ -31,7 +31,7 @@ library(tidyverse)
 
 
 #Missing data
-
+Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
 
 
 #Source of Bias
