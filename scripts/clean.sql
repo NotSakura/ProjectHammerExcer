@@ -1,9 +1,4 @@
-UPDATE raw 
-SET current_price = REPLACE(REPLACE(current_price, '$', ''), ',', ''),
-    old_price = REPLACE(REPLACE(old_price, '$', ''), ',', ''),
-    price_per_unit = REPLACE(REPLACE(price_per_unit, '$', ''), ',', '');
-
--- ALTER TABLE raw
--- ADD COLUMN current_price_numeric REAL GENERATED ALWAYS AS (CAST(current_price AS REAL)),
--- ADD COLUMN old_price_numeric REAL GENERATED ALWAYS AS (CAST(old_price AS REAL)),
--- ADD COLUMN price_per_unit_numeric REAL GENERATED ALWAYS AS (CAST(price_per_unit AS REAL));
+CREATE TABLE raw_may_2024 AS
+SELECT *
+FROM raw
+WHERE nowtime BETWEEN '2024-05-01 00:00:00' AND '2024-05-31 23:59:59';
