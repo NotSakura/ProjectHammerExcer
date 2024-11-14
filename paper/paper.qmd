@@ -24,7 +24,13 @@ library(tidyverse)
 ```
 
 
-#Introduction
+# Introduction
+
+Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation (@foodinflation). This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
+
+# Data
+
+The data comes from Project Hammer, whose goal is "to drive competition and reduce collusion in the Canadian grocery sector." (\@project_hammer). The author, Jacob Filippa, looked at 8 vendors in Canada, scraping prices off their websites.Prices are updated regularly from Feb 28 2024 onwards. The data is stored in a SQL database, which contains 3 tables, `product`, `raw`, and `sqlite_stat1`. `product` contains all relevant product information
 
 
 
