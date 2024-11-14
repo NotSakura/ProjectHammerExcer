@@ -23,25 +23,16 @@ library(tidyverse)
 
 ```
 
-
-<<<<<<< HEAD
-#Introduction
-  Price of grocery prices has increased greatly over the last few years, especially after covid-19. We wanted to investigate the price accross 3 vendors: NoFrills, Loblaws, Metro. 
   
-  
-# Data
-We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
-=======
 # Introduction
 
 Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation (@foodinflation). This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
 
 # Data
+We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
 
 The data comes from Project Hammer, whose goal is "to drive competition and reduce collusion in the Canadian grocery sector." (\@project_hammer). The author, Jacob Filippa, looked at 8 vendors in Canada, scraping prices off their websites.Prices are updated regularly from Feb 28 2024 onwards. The data is stored in a SQL database, which contains 3 tables, `product`, `raw`, and `sqlite_stat1`. `product` contains all relevant product information
->>>>>>> 21ec17ed46a974781e030592a87ada16a1ba0c66
 
- 
 
 SQL was used for data manupilation because it can handle larger datasets better than CSVs.
 
@@ -67,7 +58,7 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor",
+  labs(title = "Average Price Over Time by Vendor For Leeks",
        x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
@@ -88,7 +79,7 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor",
+  labs(title = "Average Price Over Time by Vendor For Garlic",
        x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
