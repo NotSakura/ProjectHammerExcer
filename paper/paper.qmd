@@ -47,6 +47,7 @@ garlic <- read_csv("../data/02-analysis_data/garlic.csv")
 ```{r}
 library(ggplot2)
 library(dplyr)
+
 leek$Month <- as.Date(paste0(leek$month, "-01"))
 
 # Round the Avg_Price to 2 decimal places
