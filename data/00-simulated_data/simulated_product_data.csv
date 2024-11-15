@@ -1,0 +1,21 @@
+id,concatted,vendor,product_name,units,brand,detail_url,sku,upc
+1,Product_1,VendorA,Organic Banana,oz,BrandD,http://example.com/product_1,afeaxhjkpm,100456467289
+2,Product_2,VendorD,Whole Wheat Bread,kg,BrandB,http://example.com/product_2,vyilkqclrc,642354624896
+3,Product_3,VendorB,Almond Milk,bottle,BrandA,http://example.com/product_3,usjemkqakr,627466714642
+4,Product_4,VendorA,Eggs,kg,BrandD,http://example.com/product_4,hhpyhtumvc,592923858115
+5,Product_5,VendorA,Chicken Breast,oz,BrandB,http://example.com/product_5,htadaqegts,225001508672
+6,Product_6,VendorA,Rice,bottle,BrandA,http://example.com/product_6,ftfvdyoqik,932086375200
+7,Product_7,VendorC,Spinach,oz,BrandD,http://example.com/product_7,xxglsjhqeo,758441644537
+8,Product_8,VendorA,Tomato,lb,BrandB,http://example.com/product_8,qojzvglneq,966114885667
+9,Product_9,VendorB,Cheddar Cheese,lb,BrandD,http://example.com/product_9,tqkvqauiap,013346104169
+10,Product_10,VendorD,Apple,kg,BrandA,http://example.com/product_10,vxkppwpqzg,148970348675
+11,Product_11,VendorC,Frozen Peas,can,BrandB,http://example.com/product_11,lkngqnyjhv,421588138791
+12,Product_12,VendorC,Greek Yogurt,box,BrandC,http://example.com/product_12,rcuabqebfc,523467112187
+13,Product_13,VendorA,Oatmeal,bottle,BrandA,http://example.com/product_13,sxpvvptsvh,885048007589
+14,Product_14,VendorC,Avocado,g,BrandA,http://example.com/product_14,ngyfacstck,045410866457
+15,Product_15,VendorC,Granola Bars,g,BrandA,http://example.com/product_15,cfzqzuzmil,091015545183
+16,Product_16,VendorC,Canned Tuna,oz,BrandA,http://example.com/product_16,udhjrxrcyg,262984876921
+17,Product_17,VendorC,Coconut Oil,can,BrandA,http://example.com/product_17,cwtwxjmzzw,961435690582
+18,Product_18,VendorC,Olive Oil,lb,BrandC,http://example.com/product_18,vkiawsidis,460000484402
+19,Product_19,VendorB,Organic Carrots,g,BrandD,http://example.com/product_19,uihbwaskpj,574471973413
+20,Product_20,VendorA,Soy Sauce,oz,BrandB,http://example.com/product_20,rlgyryvnbk,894134003484
