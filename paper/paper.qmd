@@ -1,5 +1,6 @@
 ---
-title: "Comparing Garlic and Leek prices in Major Superstores of Canada"
+title: "Comparing Garlic and Leek prices in 4 Major Superstores of Canada"
+subtitle: "where we use graphs to find that the price stays stable except at Nofrills and Loblaws"
 author: 
   - Shreya Sakura Noskor
   - Khushaal Nandwani
@@ -8,7 +9,7 @@ author:
 thanks: "Code and data are available at: [https://github.com/NotSakura/ProjectHammerExcer.git](https://github.com/NotSakura/ProjectHammerExcer.git)."
 date: today
 date-format: long
-abstract: "We look at the average price of leek and garlic, from June 2024 to November 2024. We find that "
+abstract: "We look at the average price of leek and garlic, from June 2024 to November 2024. We find that the sister companies, Loblaws and Nofrills, which are sister companies, get a decline in price for both leek and garlic, while Walmart and Metro stay relativly the same. The interest is the fact that, Toronto is facing a lrage increase in grocery prices and we wanted to compare the price accross different grocery chains. This will help understand what influences the price, and where to shop to make a finacially smart decision."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -28,18 +29,30 @@ library(tidyverse)
 
 Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation (@foodinflation). This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
 
+The estimand, which is the variable we are trying to investigate, is the average price of garlic and leek each month. We compare the estimand across different vendor to see which grocery chain has the lowest price, and which chain has the most fluctuation. 
+
+The gap we were trying to cover was that fact that we all know grocery prices are rising across all stores, but we do not know specifically which stores increase them the most. We do so by comparing the average price of leek and garlic in out 4 grocery chains: Loblaws, Nofrills, Walmart, and Metro. We are interested in these 4 vendors because, Loblaws and NoFrills are sister companies who have a reputation for pricing their items higher, while Metro and Walmart have the reputation for the prices to be a lot more affordable. 
+
+We will be taking a look at this issue across our 3 sections. First is the data section where we will discuss the variables we cleaned and isolated and why we did so. Then is out Result section where we look at the actual graphs of the prices, where unexpectedly, Loblaws and Nofrills, decrease their price a lot more than Metro and Walmart do. And lastly, we have the discussion sections where we talk about causation vs, correlation, bias, and any missing data. 
+
 # Data
-R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manupilate the data.
+R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manipulate the data because it can handle larger datasets better than CSVs.
  
 
-We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
+We got the data from @foodinflation in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
 
 
 
 
-SQL was used for data manupilation because it can handle larger datasets better than CSVs.
+## Measurement
+The prices were collected from @foodinflation, and they were web scrapping to get such information. They would find the flyers for the grocery stores and web scrap them to collect this data. That is the reason why there is less data points for Walmart, which will be discussed in the later sections. 
+
+the variables we examine, is the food price, date, and 4 different vendors for 2 different groceries. We decided on choosing to examine the price of leek and garlic because this was an item that was common across the 4 vendors. It is also fresh produce so the unit for price per unit is relatively same across the vendors. We chose to investigate the date because we were interested in how each of the vendors change their price across the months we chose. The date was chosen to compare the price against time and to see which vendors are more stable than all the other. And lastly, the food price was chose due to the fact that, that is what we are investigating. 
 
 ```{r}
+#| echo: false
+#| warning: false
+#| include: true
 library(readr)
 leek <- read_csv("../data/02-analysis_data/leeks.csv")
 garlic <- read_csv("../data/02-analysis_data/garlic.csv")
@@ -48,6 +61,11 @@ garlic <- read_csv("../data/02-analysis_data/garlic.csv")
 
 # Results
 ```{r}
+#| echo: false
+#| warning: false
+#| include: true
+#| label: fig-leek
+#| fig-cap: Average Price Over Time by Vendor For Leeks, where both Loblaws and Nofrills (sister companies), had a decline but not the others
 library(ggplot2)
 library(dplyr)
 
@@ -62,7 +80,7 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor For Leeks",
+  labs(
        x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
@@ -70,8 +88,16 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+In @fig-leek we see that there is decline in price of leek in Loblaws, after the third month, where before it was stable, staying at $6.00 per unit. NoFrills experienced a decrease of \$1.50 to \$3.50 per unit. Walmart doesn't have too much data but it looks as though the price has stayed at \$4.50 per unit. Metro also stays the same at \$5.50 per unit.
+
+\newpage
 
 ```{r}
+#| echo: false
+#| warning: false
+#| include: true
+#| label: fig-garlic
+#| fig-cap: Average Price Over Time by Vendor For Garlic, where we notice that the price relativly stays the same, except the sister companies, Loblaws and Nofrills.
 garlic$Month <- as.Date(paste0(leek$month, "-01"))
 
 # Round the Avg_Price to 2 decimal places
@@ -83,7 +109,7 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor For Garlic",
+  labs(
        x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
@@ -91,12 +117,13 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-
+In @fig-garlic we see that there is decline in price of leek in Loblaws, from \$7 per unit to \$6.5 per unit, which went right back up in October 20204. NoFrills experienced a decrease until August 2024, where as after in increase right back up to its original price. Walmart doesn't have too much data but it looks as though the price increased from \$2.77 to \$5.17. Metro also relatively stays the same at \$1.50 per unit of garlic.
 
 # Discussion
 
+We initially predicted that the price of Loblaws and NoFrills will stay similar while, Metro and Walmart will be a lot more cheaper across the months. This is due to the fact that, each of us have shopped at all of these stores and, Loblaws and NoFrills have a reputation for having a higher price in items than Metro and Walmart. Our predictions were true for the garlic however, for the leek, there was not a lot fo difference in price between Walmart, Metro, Loblaws and NoFrills. 
 
-# Correlation vs. Causation
+## Correlation vs. Causation
 Correlation measures the relationship between two variables—how they move or change together. For example, if two variables (like hours studied and exam score) increase together, they have a positive correlation. If one variable increases while the other decreases (like hours of TV watched and exam score), they have a negative correlation. Importantly, correlation doesn’t imply that one variable causes the change in the other; it only indicates that they tend to move in a related way.
 
 In our graphs, we did not find any correlations among the variables. Each of the vendors changed their prices individually. 
@@ -105,11 +132,11 @@ Causation implies that one event (the cause) directly affects another event (the
 
 Again there is no causation found in our graphs, and is not relevant. 
 
-# Missing data
+## Missing data
 Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
 
 
-# Source of Bias
+## Source of Bias
 The prices of garlic and leek in Walmart, Loblaws, and No Frills are used in this analysis. Of the two most significant sources of bias, possibly affecting this analysis, regional pricing and different product varieties stand out. Regional pricing may result in price variation due to a wide range of factors that include transportation cost, local supply and demand, and regional supplier agreements. For instance, prices of garlic and leek for the same vendor may vary between an urban and a rural setting and might make a vendor look more expensive simply because of the regions it operates within in the dataset. Product variety further complicates the comparison, as different vendors can have a variety of garlic and leeks they sell, such as organic, imported, or in bulk. These types often also carry different prices, and if one vendor mainly sells high premium or bulk produce, while another mainly sells regular, single-item offerings, it could skew average price comparisons. Trying to work out these biases by matching the prices within comparable regions and types of garlic and leeks, where possible, would go a long way toward comparison of pricing for each vendor in a far more fair manner.
 
 

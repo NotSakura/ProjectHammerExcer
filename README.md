@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project analyzes the average prices of garlic and leeks from June 2024 to November 2024 in Canada’s major superstores. We aim to identify pricing trends, rank vendors from most to least expensive, and evaluate the cost evolution over time.
+We look at the average price of leek and garlic, from June 2024 to November 2024. We aim to identify pricing trends, rank vendors from most to least expensive, and evaluate the cost evolution over time. We find that the sister companies, Loblaws and Nofrills, which are sister companies, get a decline in price for both leek and garlic, while Walmart and Metro stay relativly the same. The interest is the fact that, Toronto is facing a lrage increase in grocery prices and we wanted to compare the price accross different grocery chains. This will help understand what influences the price, and where to shop to make a finacially smart decision.
 
 The paper for this project can be found [here](paper/paper.pdf).
 
@@ -19,4 +19,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the auto-complete tool, Codriver. The abstract and introduction were written with the help of ChatHorse and the entire chat history is available in inputs/llms/usage.txt.
+SQL entries were corrected using ChatGPT, among other things. Full usage can be found at usage.txt
