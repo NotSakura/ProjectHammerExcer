@@ -5,14 +5,8 @@ FROM
     product
 GROUP BY 
     product_name
+HAVING 
+    COUNT(DISTINCT vendor) >= 4
 ORDER BY 
     product_count DESC
 LIMIT 10;
-
-
-
--- Basil|13
--- Blueberries|12
--- Leeks|7
--- Garlic|7
--- Beef Burgers|7

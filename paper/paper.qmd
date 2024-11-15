@@ -1,5 +1,5 @@
 ---
-title: "My title"
+title: "Comparing Garlic and Leek prices in Major Superstores of Canada"
 author: 
   - Shreya Sakura Noskor
   - Khushaal Nandwani
@@ -29,9 +29,12 @@ library(tidyverse)
 Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation (@foodinflation). This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
 
 # Data
+R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manupilate the data.
+ 
+
 We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
 
-The data comes from Project Hammer, whose goal is "to drive competition and reduce collusion in the Canadian grocery sector." (\@project_hammer). The author, Jacob Filippa, looked at 8 vendors in Canada, scraping prices off their websites.Prices are updated regularly from Feb 28 2024 onwards. The data is stored in a SQL database, which contains 3 tables, `product`, `raw`, and `sqlite_stat1`. `product` contains all relevant product information
+
 
 
 SQL was used for data manupilation because it can handle larger datasets better than CSVs.
@@ -92,9 +95,14 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
 # Discussion
 
 
-#Correlation vs. Causation
+# Correlation vs. Causation
+Correlation measures the relationship between two variables—how they move or change together. For example, if two variables (like hours studied and exam score) increase together, they have a positive correlation. If one variable increases while the other decreases (like hours of TV watched and exam score), they have a negative correlation. Importantly, correlation doesn’t imply that one variable causes the change in the other; it only indicates that they tend to move in a related way.
 
+In our graphs, we did not find any correlations among the variables. Each of the vendors changed their prices individually. 
 
+Causation implies that one event (the cause) directly affects another event (the effect). In other words, a change in one variable is responsible for the change in another. Causation is a stronger claim than correlation and typically requires experimental or controlled studies to confirm because observational data alone often cannot definitively show causation due to other confounding factors.
+
+Again there is no causation found in our graphs, and is not relevant. 
 
 # Missing data
 Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
