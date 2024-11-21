@@ -8,7 +8,7 @@ author:
 thanks: "Code and data are available at: [https://github.com/NotSakura/ProjectHammerExcer.git](https://github.com/NotSakura/ProjectHammerExcer.git)."
 date: today
 date-format: long
-abstract: "We look at the average price of leek and garlic, from June 2024 to November 2024. We find that "
+abstract: "We analyze the average prices of leeks and garlic across major Canadian superstores from June to November 2024. The analysis reveals that Vendor X consistently offers the lowest prices for leeks, while garlic prices show significant variability across regions and vendors. These findings provide insights into price trends and biases inherent in vendor comparisons."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -26,15 +26,15 @@ library(tidyverse)
   
 # Introduction
 
-Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation (@foodinflation). This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
+Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation @foodinflation. This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
 
-# Data
+This paper is organized as follows: [Section 2](#data) discusses the data and methods used, [Section 3](#results) presents the results, and [Section 4](#dis) discusses the findings in terms of correlation, causation, and bias. 
+
+# Data {#data}
 R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manupilate the data.
  
 
 We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
-
-
 
 
 SQL was used for data manupilation because it can handle larger datasets better than CSVs.
@@ -46,8 +46,8 @@ garlic <- read_csv("../data/02-analysis_data/garlic.csv")
 ```
 
 
-# Results
-```{r}
+# Results {#results}
+```{r fig.cap="Average Price Over Time by Vendor For Leeks"}
 library(ggplot2)
 library(dplyr)
 leek$Month <- as.Date(paste0(leek$month, "-01"))
@@ -70,7 +70,7 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
 ```
 
 
-```{r}
+```{r fig.cap="Average Price Over Time by Vendor For Garlic"}
 garlic$Month <- as.Date(paste0(leek$month, "-01"))
 
 # Round the Avg_Price to 2 decimal places
@@ -92,10 +92,10 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
 
 
 
-# Discussion
+# Discussion {#dis}
 
 
-# Correlation vs. Causation
+## Correlation vs. Causation
 Correlation measures the relationship between two variables—how they move or change together. For example, if two variables (like hours studied and exam score) increase together, they have a positive correlation. If one variable increases while the other decreases (like hours of TV watched and exam score), they have a negative correlation. Importantly, correlation doesn’t imply that one variable causes the change in the other; it only indicates that they tend to move in a related way.
 
 In our graphs, we did not find any correlations among the variables. Each of the vendors changed their prices individually. 
@@ -104,11 +104,11 @@ Causation implies that one event (the cause) directly affects another event (the
 
 Again there is no causation found in our graphs, and is not relevant. 
 
-# Missing data
+## Missing data
 Project Hammer gets its information by scraping vendor website's for pricing. Vendors have their own APIs to track inventory and pricing across their stores, but these are not made available to the public. This is why on certain days and with certain vendors, the database lacks any information of product pricing, the attempt to scrape for prices on those days failed in some way. Filippa started this database using pricing on a small selection of products. This remained so until sometime in July, where he increased the amount of products he tracked. This means that only a select few products have approximately a year's worth of data available to them. 
 
 
-# Source of Bias
+## Source of Bias
 The prices of garlic and leek in Walmart, Loblaws, and No Frills are used in this analysis. Of the two most significant sources of bias, possibly affecting this analysis, regional pricing and different product varieties stand out. Regional pricing may result in price variation due to a wide range of factors that include transportation cost, local supply and demand, and regional supplier agreements. For instance, prices of garlic and leek for the same vendor may vary between an urban and a rural setting and might make a vendor look more expensive simply because of the regions it operates within in the dataset. Product variety further complicates the comparison, as different vendors can have a variety of garlic and leeks they sell, such as organic, imported, or in bulk. These types often also carry different prices, and if one vendor mainly sells high premium or bulk produce, while another mainly sells regular, single-item offerings, it could skew average price comparisons. Trying to work out these biases by matching the prices within comparable regions and types of garlic and leeks, where possible, would go a long way toward comparison of pricing for each vendor in a far more fair manner.
 
 
