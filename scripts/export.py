@@ -13,7 +13,7 @@ rows = cursor.fetchall()
 column_names = [description[0] for description in cursor.description]
 
 # Write data to CSV file
-with open("leeks.csv", "w", newline="") as csv_file:
+with open("../data/leeks.csv", "w", newline="") as csv_file:
     writer = csv.writer(csv_file)
     writer.writerow(column_names)  # Write header
     writer.writerows(rows)  # Write data
