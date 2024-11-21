@@ -14,11 +14,6 @@ number-sections: true
 bibliography: references.bib
 ---
 
-<!-- Cite the data
-figure removal
-r code
- -->
-
 ```{r}
 #| include: false
 #| warning: false
