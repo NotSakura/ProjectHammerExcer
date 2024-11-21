@@ -1,5 +1,5 @@
 ---
-title: "Comparing Garlic and Leek prices in Major Superstores of Canada"
+title: "Comparing Garlic and Leek Prices in Major Superstores of Canada"
 author: 
   - Shreya Sakura Noskor
   - Khushaal Nandwani
@@ -13,6 +13,11 @@ format: pdf
 number-sections: true
 bibliography: references.bib
 ---
+
+<!-- Cite the data
+figure removal
+r code
+ -->
 
 ```{r}
 #| include: false
@@ -34,12 +39,16 @@ This paper is organized as follows: [Section 2](#data) discusses the data and me
 R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manupilate the data.
  
 
-We got the data from https://jacobfilipp.com/hammer/ in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
+We got the data from @filipp_hammer in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
 
 
 SQL was used for data manupilation because it can handle larger datasets better than CSVs.
 
 ```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
 library(readr)
 leek <- read_csv("../data/02-analysis_data/leeks.csv")
 garlic <- read_csv("../data/02-analysis_data/garlic.csv")
@@ -48,6 +57,10 @@ garlic <- read_csv("../data/02-analysis_data/garlic.csv")
 
 # Results {#results}
 ```{r fig.cap="Average Price Over Time by Vendor For Leeks"}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
 library(ggplot2)
 library(dplyr)
 leek$Month <- as.Date(paste0(leek$month, "-01"))
@@ -61,8 +74,7 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor For Leeks",
-       x = "Month",
+  labs(x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
   theme_minimal() +                       # Clean theme
@@ -71,6 +83,10 @@ ggplot(leek, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
 
 
 ```{r fig.cap="Average Price Over Time by Vendor For Garlic"}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
 garlic$Month <- as.Date(paste0(leek$month, "-01"))
 
 # Round the Avg_Price to 2 decimal places
@@ -82,8 +98,7 @@ ggplot(garlic, aes(x = Month, y = Avg_Price, color = vendor, group = vendor)) +
   geom_point(size = 3) +                  # Points on the line for visibility
   scale_x_date(date_labels = "%b %Y",     # Format the x-axis as month-year (e.g., Jan 2023)
                date_breaks = "1 month") +  # Set breaks to be 1 month
-  labs(title = "Average Price Over Time by Vendor For Garlic",
-       x = "Month",
+  labs(x = "Month",
        y = "Average Price (Rounded)",
        color = "Vendor") +                 # Label for the legend
   theme_minimal() +                       # Clean theme
