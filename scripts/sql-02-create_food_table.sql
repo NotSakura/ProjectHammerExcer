@@ -1,4 +1,5 @@
--- Create a new table with average monthly prices for each vendor for product_name = "Garlic"
+-- Description: Create a new table with average monthly prices for each vendor for product_name = "Garlic"
+-- Change the product_name below as per usage
 CREATE TABLE garlic AS
 SELECT 
     vendor,

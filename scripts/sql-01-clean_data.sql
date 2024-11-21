@@ -1,3 +1,5 @@
+-- Description: This script cleans the raw data and creates new tables for analysis
+
 CREATE TABLE raw_may_2024 AS
 SELECT *
 FROM raw

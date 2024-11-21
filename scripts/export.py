@@ -1,6 +1,9 @@
+""" This script exports the data from the SQLite database to a CSV file. 
+This is run once all the sql scripts have been run and the data has been processed.
+"""
+
 import sqlite3
 import csv
-
 
 conn = sqlite3.connect("hammer-2-processed.sqlite")
 cursor = conn.cursor()
