@@ -5,8 +5,6 @@
 # Pre-requiste: download the data from [https://jacobfilipp.com/hammer/](https://jacobfilipp.com/hammer/). It is the "Zipped CSV with full price data" button. 
 
 library(httr)
-library(DBI)
-library(RSQLite)
 
 # URL of the data source
 url <- "https://jacobfilipp.com/hammerdata/hammer-3-compressed.zip"

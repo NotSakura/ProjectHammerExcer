@@ -8,7 +8,7 @@ author:
 thanks: "Code and data are available at: [https://github.com/NotSakura/ProjectHammerExcer.git](https://github.com/NotSakura/ProjectHammerExcer.git)."
 date: today
 date-format: long
-abstract: "We analyze the average prices of leeks and garlic across major Canadian superstores from June to November 2024. The analysis reveals that Vendor X consistently offers the lowest prices for leeks, while garlic prices show significant variability across regions and vendors. These findings provide insights into price trends and biases inherent in vendor comparisons."
+abstract: "We analyze the average prices of leeks and garlic across four major Canadian superstores—Walmart, NoFrills, Metro, and Loblaws—from June 2024 to November 2024. The analysis reveals that Metro consistently offers the lowest prices for leeks, while garlic prices show significant variability across regions and vendors. These findings provide valuable insights into pricing trends and the biases inherent in vendor comparisons."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -26,12 +26,14 @@ library(tidyverse)
   
 # Introduction
 
-Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation @foodinflation. This paper looks at key products provided by the big 8 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
+Canadian grocery prices have skyrocketed in the past few years, often surpassing inflation @foodinflation. This paper looks at key products provided by the big 4 vendors, and finds the most to least expensive deals. Current prices are also compared to previous records to see trends across vendors in these products.
+
+Garlic and leeks are staple ingredients in many cuisines worldwide, valued for their distinctive flavors, versatility, and nutritional benefits. Garlic, often referred to as a superfood, is renowned for its medicinal properties, including boosting immunity and improving cardiovascular health. Leeks, a close relative of onions and garlic, are a rich source of vitamins and minerals, contributing to a healthy diet. Both ingredients are integral to diverse dishes, from soups and stews to gourmet recipes. Their consistent demand and significant role in household and restaurant kitchens make understanding their pricing trends across Canadian superstores an important economic and culinary study.
 
 This paper is organized as follows: [Section 2](#data) discusses the data and methods used, [Section 3](#results) presents the results, and [Section 4](#dis) discusses the findings in terms of correlation, causation, and bias. 
 
 # Data {#data}
-R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. Finally, SQLite by  @citeSQLite was used to clean and manupilate the data.
+R by @citeR was used to analyze the data along with its library Tidyverse by @tidy. We also used  @citePython to convert the data from sqlite database to csv. To download the data, we employed @citeHttr. Finally, @citeSQLite was used to clean and manupilate the data.
  
 
 We got the data from @filipp_hammer in the form of sqlite database. We selected to analyze Garlic and Leeks because it was available in different vendors with the same name. Average price was taken for the current price per month for every vendor and a table was created for the same. This table was then converted into a .csv file to analyze in R using Python, where the script for it can be found in /scripts/export.py.
